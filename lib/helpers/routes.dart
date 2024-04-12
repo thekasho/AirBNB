@@ -11,5 +11,7 @@ const String screenNewPassword = '/new-password';
 
 const String screenMainHome = '/main-home';
 
+const String screenProfileUpdate = '/profile-update';
+
 const String screenUnitView = '/view-unit';
 

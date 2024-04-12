@@ -101,9 +101,6 @@ class UnitsContImp extends UnitsCont {
   likeUnit(id) async {
     try {
       if(id >= 1){
-        requestStatus = RequestStatus.loading;
-        update();
-
         if(!isConnected){
           Get.defaultDialog(
             backgroundColor: white,
@@ -127,15 +124,30 @@ class UnitsContImp extends UnitsCont {
           update();
           return;
         }
-
         Map likeRequest = {
           'user_id': userid.toString(),
           'unit_id': id.toString(),
         };
         var likeRes = await requests.postData(likeRequest, Links.likeUnit);
         if(likeRes['status'] == "success"){
-          await getUnits();
-          requestStatus = RequestStatus.success;
+          Get.defaultDialog(
+            backgroundColor: white,
+            title: "Success",
+            titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+            titleStyle: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+                color: green,
+                fontWeight: FontWeight.bold,
+            ),
+            content: Text(
+              "Saved Success..",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+              ),
+            ),
+          );
           update();
         }
       }

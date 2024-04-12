@@ -14,7 +14,11 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: screenOTPCode, page: () => const OTPCodeScreen() ),
   GetPage(name: screenNewPassword, page: () => const NewPasswordScreen() ),
 
+  // profile
+  GetPage(name: screenProfileUpdate, page: () => const ProfileUpdateScreen() ),
+
   GetPage(name: screenMainHome, page: () => const MainHomeScreen() ),
+
 
   // GetPage(name: screenUnitView, page: () => const ViewUnitScreen() ),
 

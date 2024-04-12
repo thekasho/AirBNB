@@ -128,6 +128,7 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
               GestureDetector(
+                onTap: () => Get.toNamed(screenProfileUpdate),
                 child: Container(
                   width: 100.w,
                   padding: EdgeInsets.symmetric(

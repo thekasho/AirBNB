@@ -89,23 +89,21 @@ class _MainHomePageState extends State<MainHomePage> {
                                                     Radius.circular(30)),
                                               ),
                                               child: Stack(
-                                                alignment: Alignment
-                                                    .bottomCenter,
+                                                alignment: Alignment.bottomCenter,
                                                 children: [
                                                   SizedBox(
                                                     child: CachedNetworkImage(
-                                                      imageUrl: "${fcont
-                                                          .fUnits[i]['images'][0]}",
+                                                      imageUrl: "${fcont.fUnits[i]['images'][0]}",
                                                       height: 100.h,
                                                       width: 100.w,
                                                       fit: BoxFit.fill,
                                                       errorWidget: (_, i, e) {
                                                         return Container(
-                                                            color: black,
-                                                            height: 100.h,
-                                                            child: Image.asset(
-                                                              "assets/images/blank.png",
-                                                            )
+                                                          color: black,
+                                                          height: 100.h,
+                                                          child: Image.asset(
+                                                            "assets/images/blank.png",
+                                                          ),
                                                         );
                                                       },
                                                       placeholder: (_, i) {
@@ -127,14 +125,11 @@ class _MainHomePageState extends State<MainHomePage> {
                                                         right: 5.w,
                                                         bottom: 2.h
                                                     ),
-                                                    alignment: Alignment
-                                                        .bottomLeft,
+                                                    alignment: Alignment.bottomLeft,
                                                     width: 100.w,
                                                     child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment
-                                                          .start,
-                                                      mainAxisAlignment: MainAxisAlignment
-                                                          .end,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      mainAxisAlignment: MainAxisAlignment.end,
                                                       children: [
                                                         Container(
                                                           decoration: BoxDecoration(
@@ -149,79 +144,53 @@ class _MainHomePageState extends State<MainHomePage> {
                                                                 .withOpacity(
                                                                 .4),
                                                           ),
-                                                          padding: EdgeInsets
-                                                              .symmetric(
+                                                          padding: EdgeInsets.symmetric(
                                                             horizontal: 3.w,
                                                             vertical: .6.h,
                                                           ),
                                                           width: 100.w,
                                                           child: Text(
-                                                            "${fcont
-                                                                .fUnits[i]['title']}",
+                                                            "${fcont.fUnits[i]['title']}",
                                                             maxLines: 1,
-                                                            overflow: TextOverflow
-                                                                .ellipsis,
-                                                            style: Theme
-                                                                .of(context)
-                                                                .textTheme
-                                                                .bodyLarge,
+                                                            overflow: TextOverflow.ellipsis,
+                                                            style: Theme.of(context).textTheme.bodyLarge,
                                                           ),
                                                         ),
                                                         Container(
                                                           width: 100.w,
-                                                          color: white
-                                                              .withOpacity(.4),
-                                                          padding: EdgeInsets
-                                                              .symmetric(
+                                                          color: white.withOpacity(.4),
+                                                          padding: EdgeInsets.symmetric(
                                                             horizontal: 3.w,
                                                             vertical: .6.h,
                                                           ),
                                                           child: Text(
-                                                            "${fcont
-                                                                .fUnits[i]['address']}",
+                                                            "${fcont.fUnits[i]['address']}",
                                                             maxLines: 1,
-                                                            overflow: TextOverflow
-                                                                .ellipsis,
-                                                            style: Theme
-                                                                .of(context)
-                                                                .textTheme
-                                                                .bodyMedium,
+                                                            overflow: TextOverflow.ellipsis,
+                                                            style: Theme.of(context).textTheme.bodyMedium,
                                                           ),
                                                         ),
                                                         Container(
                                                           decoration: BoxDecoration(
-                                                            borderRadius: const BorderRadius
-                                                                .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(15),
-                                                              bottomRight: Radius
-                                                                  .circular(15),
+                                                            borderRadius: const BorderRadius.only(
+                                                              bottomLeft: Radius.circular(15),
+                                                              bottomRight: Radius.circular(15),
                                                             ),
-                                                            color: white
-                                                                .withOpacity(
-                                                                .4),
+                                                            color: white.withOpacity(.4),
                                                           ),
-                                                          padding: EdgeInsets
-                                                              .symmetric(
+                                                          padding: EdgeInsets.symmetric(
                                                             horizontal: 3.w,
                                                             vertical: 1.h,
                                                           ),
                                                           width: 100.w,
                                                           child: Text(
-                                                            "\$${fcont
-                                                                .fUnits[i]['price']} / night",
+                                                            "\$${fcont.fUnits[i]['price']} / night",
                                                             maxLines: 1,
-                                                            overflow: TextOverflow
-                                                                .ellipsis,
-                                                            style: Theme
-                                                                .of(context)
-                                                                .textTheme
-                                                                .bodyMedium!
-                                                                .copyWith(
-                                                                fontSize: 18.sp,
-                                                                color: darkBlue,
-                                                                fontWeight: FontWeight
-                                                                    .bold
+                                                            overflow: TextOverflow.ellipsis,
+                                                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                                              fontSize: 18.sp,
+                                                              color: darkBlue,
+                                                              fontWeight: FontWeight.bold,
                                                             ),
                                                           ),
                                                         ),
@@ -229,57 +198,45 @@ class _MainHomePageState extends State<MainHomePage> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    alignment: Alignment
-                                                        .topRight,
+                                                    alignment: Alignment.topRight,
                                                     padding: EdgeInsets.only(
                                                       right: 3.w,
                                                       top: 3.w,
                                                     ),
                                                     width: 100.w,
                                                     height: 100.h,
-                                                    // color: black.withOpacity(.5),
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        fcont.likeUnit(fcont
-                                                            .fUnits[i]['id']);
+                                                        fcont.fUnits[i]['is_like'] == 1 ? fcont.fUnits[i]['is_like'] = 0 : fcont.fUnits[i]['is_like'] = 1;
+                                                        fcont.fUnits[i]['is_like'] == 1
+                                                            ? fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] +1
+                                                            : fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] -1;
+                                                        fcont.update();
+                                                        fcont.likeUnit(fcont.fUnits[i]['id']);
                                                       },
                                                       child: Container(
                                                         decoration: const BoxDecoration(
                                                           color: backgroundColor,
-                                                          borderRadius: BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  20)),
+                                                          borderRadius: BorderRadius.all(Radius.circular(20)),
                                                         ),
                                                         width: 15.w,
                                                         height: 4.5.h,
-                                                        alignment: Alignment
-                                                            .center,
+                                                        alignment: Alignment.center,
                                                         child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment
-                                                              .center,
+                                                          mainAxisAlignment: MainAxisAlignment.center,
                                                           children: [
                                                             Text(
-                                                              "${fcont
-                                                                  .fUnits[i]['likes']}",
-                                                              style: Theme
-                                                                  .of(context)
-                                                                  .textTheme
-                                                                  .titleLarge!
-                                                                  .copyWith(
+                                                              "${fcont.fUnits[i]['likes']}",
+                                                              style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                                                 fontSize: 16.sp,
                                                               ),
                                                             ),
                                                             SizedBox(
                                                                 width: 1.w),
                                                             Icon(
-                                                              fcont
-                                                                  .fUnits[i]['is_like'] ==
-                                                                  1
-                                                                  ? Icons
-                                                                  .favorite
-                                                                  : Icons
-                                                                  .favorite_border,
+                                                              fcont.fUnits[i]['is_like'] == 1
+                                                                ? Icons.favorite
+                                                                : Icons.favorite_border,
                                                               color: red,
                                                               size: 22.sp,
                                                             ),
@@ -613,9 +570,6 @@ class _MainHomePageState extends State<MainHomePage> {
                   ),
                   width: 100.w,
                   height: 65.h,
-                  margin: EdgeInsets.only(
-                    bottom: 20.h,
-                  ),
                   child: GetBuilder<UnitsContImp>(builder: (cont) {
                     if (cont.requestStatus == RequestStatus.loading) {
                       return SizedBox(
@@ -649,10 +603,8 @@ class _MainHomePageState extends State<MainHomePage> {
                           itemBuilder: (_, i) {
                             return GestureDetector(
                               onTap: () {
-
                               },
                               child: Container(
-                                height: 55.h,
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                     borderRadius: const BorderRadius.all(
@@ -670,9 +622,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                       height: 20.h,
                                       clipBehavior: Clip.antiAlias,
                                       decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20)),
-                                          color: lightGrey
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                        color: lightGrey,
                                       ),
                                       child: Stack(
                                         alignment: Alignment.bottomCenter,
@@ -704,9 +655,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           ),
                                           Container(
                                             decoration: BoxDecoration(
-                                              borderRadius: BorderRadius
-                                                  .circular(
-                                                  1.w),
+                                              borderRadius: BorderRadius.circular(1.w),
                                             ),
                                             padding: EdgeInsets.only(
                                               left: 5.w,
@@ -727,36 +676,35 @@ class _MainHomePageState extends State<MainHomePage> {
                                             // color: black.withOpacity(.5),
                                             child: GestureDetector(
                                               onTap: () {
-
+                                                cont.allUnits[i]['is_like'] == 1 ? cont.allUnits[i]['is_like'] = 0 : cont.allUnits[i]['is_like'] = 1;
+                                                cont.allUnits[i]['is_like'] == 1
+                                                    ? cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] +1
+                                                    : cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] -1;
+                                                cont.update();
+                                                cont.likeUnit(cont.allUnits[i]['id']);
                                               },
                                               child: Container(
                                                 decoration: const BoxDecoration(
                                                   color: backgroundColor,
-                                                  borderRadius: BorderRadius
-                                                      .all(
-                                                      Radius.circular(20)),
+                                                  borderRadius: BorderRadius.all(Radius.circular(20)),
                                                 ),
                                                 width: 13.w,
                                                 height: 4.h,
                                                 alignment: Alignment.center,
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment
-                                                      .center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      "${cont
-                                                          .allUnits[i]['likes']}",
-                                                      style: Theme
-                                                          .of(context)
-                                                          .textTheme
-                                                          .titleLarge!
-                                                          .copyWith(
+                                                      "${cont.allUnits[i]['likes']}",
+                                                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                                         fontSize: 16.sp,
                                                       ),
                                                     ),
                                                     SizedBox(width: 1.w),
                                                     Icon(
-                                                      Icons.favorite,
+                                                      cont.allUnits[i]['is_like'] == 1
+                                                        ? Icons.favorite
+                                                        : Icons.favorite_border,
                                                       color: red,
                                                       size: 18.sp,
                                                     ),
@@ -832,7 +780,6 @@ class _MainHomePageState extends State<MainHomePage> {
                   }),
                 ),
                 SizedBox(height: 3.h),
-
               ],
             ),
           ),

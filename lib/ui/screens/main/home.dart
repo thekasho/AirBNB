@@ -46,12 +46,13 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   children: [
                     const Spacer(flex: 2),
                     Text(
-                        "Hello Welcome ..",
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.copyWith(color: darkGrey)
+                      "Hello Welcome ..",
+                      style: Theme
+                        .of(context)
+                        .textTheme
+                        .headlineMedium
+                        ?.copyWith(color: darkGrey,
+                      ),
                     ),
                     const Spacer(),
                     Text(

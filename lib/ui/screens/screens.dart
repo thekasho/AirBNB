@@ -1,10 +1,9 @@
 import 'package:airbnb/core/class/request_status.dart';
+import 'package:airbnb/logic/auth/profile.dart';
 import 'package:airbnb/logic/auth/register.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -33,6 +32,8 @@ part 'auth/login.dart';
 part 'auth/reset_password.dart';
 part 'auth/otp_code.dart';
 part 'auth/new_password.dart';
+
+part 'auth/profile.dart';
 
 part 'main/home.dart';
 part 'main/home_page.dart';
