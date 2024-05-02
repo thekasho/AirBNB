@@ -81,176 +81,22 @@ class _MainHomePageState extends State<MainHomePage> {
                                           childAspectRatio: 1.2,
                                         ),
                                         itemBuilder: (_, i) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              Get.to(()=>ViewUnitScreen(id: fcont.fUnits[i]['id']));
+                                          return FeaturedUnitItem(
+                                            address: fcont.fUnits[i]['address'],
+                                            imageLink: fcont.fUnits[i]['images'][0],
+                                            isLike: fcont.fUnits[i]['is_like'],
+                                            likes: fcont.fUnits[i]['likes'],
+                                            price: fcont.fUnits[i]['price'],
+                                            title: fcont.fUnits[i]['title'],
+                                            onTap: () => Get.to( () => ViewUnitScreen(id: fcont.fUnits[i]['id']) ),
+                                            likeOnTap: () {
+                                              fcont.fUnits[i]['is_like'] == 1 ? fcont.fUnits[i]['is_like'] = 0 : fcont.fUnits[i]['is_like'] = 1;
+                                              fcont.fUnits[i]['is_like'] == 1
+                                                  ? fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] +1
+                                                  : fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] -1;
+                                              fcont.update();
+                                              fcont.likeUnit(fcont.fUnits[i]['id']);
                                             },
-                                            child: Container(
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(30)),
-                                              ),
-                                              child: Stack(
-                                                alignment: Alignment.bottomCenter,
-                                                children: [
-                                                  SizedBox(
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: "${fcont.fUnits[i]['images'][0]}",
-                                                      height: 100.h,
-                                                      width: 100.w,
-                                                      fit: BoxFit.fill,
-                                                      errorWidget: (_, i, e) {
-                                                        return Container(
-                                                          color: black,
-                                                          height: 100.h,
-                                                          child: Image.asset(
-                                                            "assets/images/blank.png",
-                                                          ),
-                                                        );
-                                                      },
-                                                      placeholder: (_, i) {
-                                                        return const Center(
-                                                          child: CircularProgressIndicator(
-                                                            color: primaryColor,
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius
-                                                          .circular(1.w),
-                                                    ),
-                                                    padding: EdgeInsets.only(
-                                                        left: 5.w,
-                                                        right: 5.w,
-                                                        bottom: 2.h
-                                                    ),
-                                                    alignment: Alignment.bottomLeft,
-                                                    width: 100.w,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                      children: [
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: const BorderRadius
-                                                                .only(
-                                                              topLeft: Radius
-                                                                  .circular(15),
-                                                              topRight: Radius
-                                                                  .circular(15),
-                                                            ),
-                                                            color: white
-                                                                .withOpacity(
-                                                                .4),
-                                                          ),
-                                                          padding: EdgeInsets.symmetric(
-                                                            horizontal: 3.w,
-                                                            vertical: .6.h,
-                                                          ),
-                                                          width: 100.w,
-                                                          child: Text(
-                                                            "${fcont.fUnits[i]['title']}",
-                                                            maxLines: 1,
-                                                            overflow: TextOverflow.ellipsis,
-                                                            style: Theme.of(context).textTheme.bodyLarge,
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          width: 100.w,
-                                                          color: white.withOpacity(.4),
-                                                          padding: EdgeInsets.symmetric(
-                                                            horizontal: 3.w,
-                                                            vertical: .6.h,
-                                                          ),
-                                                          child: Text(
-                                                            "${fcont.fUnits[i]['address']}",
-                                                            maxLines: 1,
-                                                            overflow: TextOverflow.ellipsis,
-                                                            style: Theme.of(context).textTheme.bodyMedium,
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: const BorderRadius.only(
-                                                              bottomLeft: Radius.circular(15),
-                                                              bottomRight: Radius.circular(15),
-                                                            ),
-                                                            color: white.withOpacity(.4),
-                                                          ),
-                                                          padding: EdgeInsets.symmetric(
-                                                            horizontal: 3.w,
-                                                            vertical: 1.h,
-                                                          ),
-                                                          width: 100.w,
-                                                          child: Text(
-                                                            "\$${fcont.fUnits[i]['price']} / night",
-                                                            maxLines: 1,
-                                                            overflow: TextOverflow.ellipsis,
-                                                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                              fontSize: 18.sp,
-                                                              color: darkBlue,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    alignment: Alignment.topRight,
-                                                    padding: EdgeInsets.only(
-                                                      right: 3.w,
-                                                      top: 3.w,
-                                                    ),
-                                                    width: 100.w,
-                                                    height: 100.h,
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        fcont.fUnits[i]['is_like'] == 1 ? fcont.fUnits[i]['is_like'] = 0 : fcont.fUnits[i]['is_like'] = 1;
-                                                        fcont.fUnits[i]['is_like'] == 1
-                                                            ? fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] +1
-                                                            : fcont.fUnits[i]['likes'] = fcont.fUnits[i]['likes'] -1;
-                                                        fcont.update();
-                                                        fcont.likeUnit(fcont.fUnits[i]['id']);
-                                                      },
-                                                      child: Container(
-                                                        decoration: const BoxDecoration(
-                                                          color: backgroundColor,
-                                                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                                                        ),
-                                                        width: 15.w,
-                                                        height: 4.5.h,
-                                                        alignment: Alignment.center,
-                                                        child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text(
-                                                              "${fcont.fUnits[i]['likes']}",
-                                                              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                                                fontSize: 16.sp,
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                                width: 1.w),
-                                                            Icon(
-                                                              fcont.fUnits[i]['is_like'] == 1
-                                                                ? Icons.favorite
-                                                                : Icons.favorite_border,
-                                                              color: red,
-                                                              size: 22.sp,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
                                           );
                                         },
                                       ),
@@ -295,275 +141,65 @@ class _MainHomePageState extends State<MainHomePage> {
                         horizontal: 2.w,
                       ),
                       children: [
-                        SizedBox(
-                          height: 7.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bcont.currentPage = 0;
-                              bcont.filterUnits(0);
-                              bcont.update();
-                            },
-                            style: ButtonStyle(
-                              side: MaterialStateProperty.all(const BorderSide(
-                                  color: primaryColor,
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                              ),
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  )),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  bcont.currentPage == 0
-                                      ? primaryColor
-                                      : white
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.select_all, size: 20.sp,
-                                    color: bcont.currentPage == 0
-                                        ? white
-                                        : primaryColor),
-                                SizedBox(width: 1.w),
-                                SizedBox(width: 0.6.w),
-                                Text(
-                                  "All",
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                      color: bcont.currentPage == 0
-                                          ? white
-                                          : primaryColor, fontSize: 19),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),  // 0
+                        FilterButton(
+                          title: "All",
+                          currentPage: bcont.currentPage,
+                          current: 0,
+                          onPressed: (){
+                            bcont.currentPage = 0;
+                            bcont.filterUnits(0);
+                            bcont.update();
+                          },
+                          icon: Icons.select_all,
+                        ),
                         SizedBox(width: 2.w),
-                        SizedBox(
-                          height: 7.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bcont.currentPage = 1;
-                              bcont.filterUnits(1);
-                              bcont.update();
-                            },
-                            style: ButtonStyle(
-                              side: MaterialStateProperty.all(const BorderSide(
-                                  color: Colors.blue,
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                              ),
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  )),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  bcont.currentPage == 1
-                                      ? primaryColor
-                                      : white
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.apartment_rounded, size: 20.sp,
-                                    color: bcont.currentPage == 1
-                                        ? white
-                                        : primaryColor),
-                                SizedBox(width: 1.w),
-                                SizedBox(width: 0.6.w),
-                                Text(
-                                  "Apartment",
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                      color: bcont.currentPage == 1
-                                          ? white
-                                          : primaryColor, fontSize: 19),
-                                ),
-                              ],
-                            ),
-                          ),
-                      ),  // 1
+                        FilterButton(
+                          title: "Apartment",
+                          currentPage: bcont.currentPage,
+                          current: 1,
+                          onPressed: (){
+                            bcont.currentPage = 1;
+                            bcont.filterUnits(1);
+                            bcont.update();
+                          },
+                          icon: Icons.apartment_rounded,
+                        ),
                         SizedBox(width: 2.w),
-                        SizedBox(
-                          height: 7.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bcont.currentPage = 2;
-                              bcont.filterUnits(2);
-                              bcont.update();
-                            },
-                            style: ButtonStyle(
-                              side: MaterialStateProperty.all(const BorderSide(
-                                  color: Colors.blue,
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                              ),
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  )),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  bcont.currentPage == 2
-                                      ? primaryColor
-                                      : white
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.villa_rounded, size: 20.sp,
-                                    color: bcont.currentPage == 2
-                                        ? white
-                                        : primaryColor),
-                                SizedBox(width: 1.w),
-                                SizedBox(width: 0.6.w),
-                                Text(
-                                  "Villa",
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                      color: bcont.currentPage == 2
-                                          ? white
-                                          : primaryColor, fontSize: 19),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),  // 2
+                        FilterButton(
+                          title: "Villa",
+                          currentPage: bcont.currentPage,
+                          current: 2,
+                          onPressed: (){
+                            bcont.currentPage = 2;
+                            bcont.filterUnits(2);
+                            bcont.update();
+                          },
+                          icon: Icons.villa_rounded,
+                        ),
                         SizedBox(width: 2.w),
-                        SizedBox(
-                          height: 7.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bcont.currentPage = 3;
-                              bcont.filterUnits(3);
-                              bcont.update();
-                            },
-                            style: ButtonStyle(
-                              side: MaterialStateProperty.all(const BorderSide(
-                                  color: Colors.blue,
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                              ),
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  )),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  bcont.currentPage == 3
-                                      ? primaryColor
-                                      : white
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.house_rounded, size: 20.sp,
-                                    color: bcont.currentPage == 3
-                                        ? white
-                                        : primaryColor),
-                                SizedBox(width: 1.w),
-                                SizedBox(width: 0.6.w),
-                                Text(
-                                  "House",
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                      color: bcont.currentPage == 3
-                                          ? white
-                                          : primaryColor, fontSize: 19),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),  // 3
+                        FilterButton(
+                          title: "House",
+                          currentPage: bcont.currentPage,
+                          current: 3,
+                          onPressed: (){
+                            bcont.currentPage = 3;
+                            bcont.filterUnits(3);
+                            bcont.update();
+                          },
+                          icon: Icons.house_rounded,
+                        ),
                         SizedBox(width: 2.w),
-                        SizedBox(
-                          height: 7.h,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              bcont.currentPage = 4;
-                              bcont.filterUnits(4);
-                              bcont.update();
-                            },
-                            style: ButtonStyle(
-                              side: MaterialStateProperty.all(const BorderSide(
-                                  color: Colors.blue,
-                                  width: 2,
-                                  style: BorderStyle.solid),
-                              ),
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                    horizontal: 4.w,
-                                  )),
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  bcont.currentPage == 4
-                                      ? primaryColor
-                                      : white
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(25),
-                                  )
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.house_siding_rounded, size: 20.sp,
-                                    color: bcont.currentPage == 4
-                                        ? white
-                                        : primaryColor),
-                                SizedBox(width: 1.w),
-                                SizedBox(width: 0.6.w),
-                                Text(
-                                  "Farm House",
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                      color: bcont.currentPage == 4
-                                          ? white
-                                          : primaryColor, fontSize: 19),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),  // 4
+                        FilterButton(
+                          title: "Farm House",
+                          currentPage: bcont.currentPage,
+                          current: 4,
+                          onPressed: (){
+                            bcont.currentPage = 4;
+                            bcont.filterUnits(4);
+                            bcont.update();
+                          },
+                          icon: Icons.house_siding_rounded,
+                        ),
                         SizedBox(width: 2.w),
                       ],
                     ),
@@ -608,164 +244,22 @@ class _MainHomePageState extends State<MainHomePage> {
                             childAspectRatio: .63,
                           ),
                           itemBuilder: (_, i) {
-                            return GestureDetector(
-                              onTap: () {
+                            return HomeUnitsItem(
+                              title: cont.allUnits[i]['title'],
+                              price: cont.allUnits[i]['price'],
+                              likes: cont.allUnits[i]['likes'],
+                              isLike: cont.allUnits[i]['is_like'],
+                              imageLink: cont.allUnits[i]['images'][0],
+                              address: cont.allUnits[i]['address'],
+                              onTap: () => Get.to( () => ViewUnitScreen(id: cont.allUnits[i]['id']) ),
+                              onLikeTap: (){
+                                cont.allUnits[i]['is_like'] == 1 ? cont.allUnits[i]['is_like'] = 0 : cont.allUnits[i]['is_like'] = 1;
+                                cont.allUnits[i]['is_like'] == 1
+                                    ? cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] +1
+                                    : cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] -1;
+                                cont.update();
+                                cont.likeUnit(cont.allUnits[i]['id']);
                               },
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(15)),
-                                    color: lightGrey.withOpacity(.3),
-                                    border: Border.all(
-                                        width: 1,
-                                        color: lightGrey
-                                    )
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 20.h,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                        color: lightGrey,
-                                      ),
-                                      child: Stack(
-                                        alignment: Alignment.bottomCenter,
-                                        children: [
-                                          SizedBox(
-                                            child: CachedNetworkImage(
-                                              imageUrl: "${cont
-                                                  .allUnits[i]['images'][0]}",
-                                              height: 100.h,
-                                              width: 100.w,
-                                              fit: BoxFit.fill,
-                                              errorWidget: (_, i, e) {
-                                                return Container(
-                                                    color: black,
-                                                    height: 100.h,
-                                                    child: Image.asset(
-                                                      "assets/images/blank.png",
-                                                    )
-                                                );
-                                              },
-                                              placeholder: (_, i) {
-                                                return const Center(
-                                                  child: CircularProgressIndicator(
-                                                    color: primaryColor,
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(1.w),
-                                            ),
-                                            padding: EdgeInsets.only(
-                                              left: 5.w,
-                                              right: 5.w,
-                                              bottom: 2.h,
-                                            ),
-                                            alignment: Alignment.bottomLeft,
-                                            width: 100.w,
-                                          ),
-                                          Container(
-                                            alignment: Alignment.topRight,
-                                            padding: EdgeInsets.only(
-                                              right: 3.w,
-                                              top: 3.w,
-                                            ),
-                                            width: 100.w,
-                                            height: 100.h,
-                                            // color: black.withOpacity(.5),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                cont.allUnits[i]['is_like'] == 1 ? cont.allUnits[i]['is_like'] = 0 : cont.allUnits[i]['is_like'] = 1;
-                                                cont.allUnits[i]['is_like'] == 1
-                                                    ? cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] +1
-                                                    : cont.allUnits[i]['likes'] = cont.allUnits[i]['likes'] -1;
-                                                cont.update();
-                                                cont.likeUnit(cont.allUnits[i]['id']);
-                                              },
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                  color: backgroundColor,
-                                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                                ),
-                                                width: 13.w,
-                                                height: 4.h,
-                                                alignment: Alignment.center,
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      "${cont.allUnits[i]['likes']}",
-                                                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                                        fontSize: 16.sp,
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 1.w),
-                                                    Icon(
-                                                      cont.allUnits[i]['is_like'] == 1
-                                                        ? Icons.favorite
-                                                        : Icons.favorite_border,
-                                                      color: red,
-                                                      size: 18.sp,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 1.h),
-                                    Text(
-                                      "${cont.allUnits[i]['title']}",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .titleMedium,
-                                    ),
-                                    SizedBox(height: .5.h),
-                                    Text(
-                                      "${cont.allUnits[i]['address']}",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                        color: darkGrey,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 17.sp,
-                                      ),
-                                    ),
-                                    SizedBox(height: .5.h),
-                                    Text(
-                                      "\$${cont.allUnits[i]['price']} / night",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                        fontSize: 18.sp,
-                                        color: darkBlue,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             );
                           },
                         ),
