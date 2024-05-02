@@ -26,21 +26,21 @@ class MainHomeContImp extends MainHomeCont {
 
   List<Widget> pagesList = [
     const MainHomePage(),
-    const Column(mainAxisAlignment: MainAxisAlignment.center, children: [Center(child: Text("Nearby"),)],),
+    const CarRentHomePageScreen(),
     const Column(mainAxisAlignment: MainAxisAlignment.center, children: [Center(child: Text("Favourite"),)],),
     const AccountPage(),
   ];
 
   List pagesTitles = [
     "Home",
-    "Nearby",
+    "Car Rent",
     "Favourite",
     "Account",
   ];
 
   List<IconData> pageIcons = [
     FontAwesomeIcons.house,
-    FontAwesomeIcons.map,
+    FontAwesomeIcons.car,
     FontAwesomeIcons.heart,
     FontAwesomeIcons.user,
   ];

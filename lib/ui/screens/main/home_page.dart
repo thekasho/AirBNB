@@ -28,8 +28,11 @@ class _MainHomePageState extends State<MainHomePage> {
             child: Column(
               children: [
                 const MainSearchInput(),
-                const MainHomeTitle(
+                MainHomeTitle(
                   sectionTitle: "Featured..",
+                  onTap: () async {
+                    Get.toNamed(screenPopularUnits);
+                  },
                 ),
                 GetBuilder<UnitsContImp>(builder: (fcont) {
                   if (fcont.requestStatus == RequestStatus.loading) {
@@ -275,8 +278,11 @@ class _MainHomePageState extends State<MainHomePage> {
                     ),
                   );
                 }),
-                const MainHomeTitle(
+                MainHomeTitle(
                   sectionTitle: "Our Recommendation..",
+                  onTap: () {
+                    Get.toNamed(screenRecommendedUnits);
+                  },
                 ),
                 SizedBox(height: 1.h),
                 GetBuilder<UnitsContImp>(builder: (bcont) {
@@ -593,6 +599,7 @@ class _MainHomePageState extends State<MainHomePage> {
                         body: GridView.builder(
                           physics: const BouncingScrollPhysics(
                               parent: AlwaysScrollableScrollPhysics()),
+                          shrinkWrap: true,
                           itemCount: cont.allUnits.length,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -779,7 +786,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     );
                   }),
                 ),
-                SizedBox(height: 3.h),
+                SizedBox(height: 10.h),
               ],
             ),
           ),

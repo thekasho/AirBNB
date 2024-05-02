@@ -2,8 +2,10 @@ import 'package:airbnb/core/class/request_status.dart';
 import 'package:airbnb/logic/auth/profile.dart';
 import 'package:airbnb/logic/auth/register.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -19,6 +21,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/functions/validator.dart';
 import '../../helpers/helpers.dart';
 import '../../logic/auth/login.dart';
+import '../../logic/cars/cars.dart';
 import '../../logic/home/landing.dart';
 import '../../logic/main/home.dart';
 import '../../logic/units/units.dart';
@@ -40,3 +43,7 @@ part 'main/home_page.dart';
 part 'main/account_page.dart';
 
 part 'unit/view.dart';
+part 'unit/popular.dart';
+part 'unit/recommended.dart';
+
+part 'cars/home.dart';

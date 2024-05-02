@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: double.infinity,
           height: double.infinity,
           child: GetBuilder<LoginContImp>(builder: (cont) {
-            if(cont.requestStatus == RequestStatus.loading){
+            if (cont.requestStatus == RequestStatus.loading) {
               return SizedBox(
                 height: 85.h,
                 width: 100.w,
@@ -87,10 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 5.w),
-                            child: Text(
-                                "Welcome back. You have been missed!",
-                                style: Theme.of(context).textTheme.titleSmall
-                            ),
+                            child: Text("Welcome back. You have been missed!",
+                                style: Theme.of(context).textTheme.titleSmall),
                           ),
                         ],
                       ),
@@ -121,10 +119,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         focusNode: f2,
                         suffixIcon: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             cont.showPassword();
                           },
-                          child: cont.isShowPassword ? const Icon(Icons.visibility_outlined) : const Icon(Icons.visibility_off_outlined),
+                          child: cont.isShowPassword
+                              ? const Icon(Icons.visibility_outlined)
+                              : const Icon(Icons.visibility_off_outlined),
                         ),
                         onFieldSubmitted: (val) {
                           f2.unfocus();
@@ -141,8 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: ElevatedButton(
                               focusNode: f3,
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(
-                                    primaryColor),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        primaryColor),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -150,15 +151,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                                 padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.symmetric(
-                                      vertical: 2.h
-                                  ),
+                                  EdgeInsets.symmetric(vertical: 2.h),
                                 ),
                               ),
                               child: Text(
                                 "Login",
-                                style: Theme
-                                    .of(context)
+                                style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
                                     ?.copyWith(color: white),
@@ -175,19 +173,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                                "Not Remember Your Password?",
-                                style: Theme.of(context).textTheme.bodySmall
-                            ),
+                            Text("Not Remember Your Password?",
+                                style: Theme.of(context).textTheme.bodySmall),
                             TextButton(
-                              onPressed: (){
+                              onPressed: () {
                                 Get.back();
                                 Get.toNamed(screenResetPassword);
                               },
-                              child: Text(
-                                  "Reset Password",
-                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(color: darkBlue)
-                              ),
+                              child: Text("Reset Password",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(color: darkBlue)),
                             )
                           ],
                         ),
@@ -197,17 +194,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                              "Don`t Have an account? ",
-                              style: Theme.of(context).textTheme.titleSmall,
+                            "Don`t Have an account? ",
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                           TextButton(
-                            onPressed: (){
+                            onPressed: () {
                               Get.back();
                               Get.toNamed(screenRegister);
                             },
                             child: Text(
-                                "Sign Up",
-                                style: Theme.of(context).textTheme.titleSmall!.copyWith(color: darkBlue),
+                              "Sign Up",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(color: darkBlue),
                             ),
                           )
                         ],

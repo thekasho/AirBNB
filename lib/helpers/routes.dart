@@ -14,4 +14,6 @@ const String screenMainHome = '/main-home';
 const String screenProfileUpdate = '/profile-update';
 
 const String screenUnitView = '/view-unit';
+const String screenPopularUnits = '/popular-units';
+const String screenRecommendedUnits = '/recommended-units';
 

@@ -2,8 +2,9 @@ part of '../widgets.dart';
 
 class MainHomeTitle extends StatelessWidget {
   final String sectionTitle;
+  final void Function()? onTap;
   const MainHomeTitle({
-    super.key, required this.sectionTitle,
+    super.key, required this.sectionTitle, this.onTap,
   });
 
   @override
@@ -22,16 +23,19 @@ class MainHomeTitle extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Container(
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.symmetric(
-            horizontal: 5.w,
-            vertical: 2.h,
-          ),
-          width: 30.w,
-          child: Text(
-            "See All",
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: primaryColor),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            alignment: Alignment.centerRight,
+            padding: EdgeInsets.symmetric(
+              horizontal: 5.w,
+              vertical: 2.h,
+            ),
+            width: 30.w,
+            child: Text(
+              "See All",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: primaryColor),
+            ),
           ),
         ),
       ],

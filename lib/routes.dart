@@ -19,6 +19,9 @@ List<GetPage<dynamic>>? routes = [
 
   GetPage(name: screenMainHome, page: () => const MainHomeScreen() ),
 
+  GetPage(name: screenPopularUnits, page: () => const PopularUnitsScreen() ),
+  GetPage(name: screenRecommendedUnits, page: () => const RecommendedUnitsScreen() ),
+
 
   // GetPage(name: screenUnitView, page: () => const ViewUnitScreen() ),
 

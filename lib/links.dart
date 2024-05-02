@@ -3,5 +3,6 @@ class Links {
   static const String register = 'https://mustafamahmoud.site/bnb/register.php';
   static const String units = 'https://mustafamahmoud.site/bnb/units.php';
   static const String likeUnit = 'https://mustafamahmoud.site/bnb/like_unit.php';
+  static const String cars = 'https://mustafamahmoud.site/bnb/cars.php';
 
 }
