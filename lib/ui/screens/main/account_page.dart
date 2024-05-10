@@ -106,27 +106,27 @@ class _AccountPageState extends State<AccountPage> {
                 style: Theme.of(context).textTheme.displayMedium,
               ),
               Divider(color: lightGrey.withOpacity(.5)),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.calendar_month, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "My Booking",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.calendar_month, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "My Booking",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               GestureDetector(
                 onTap: () => Get.toNamed(screenProfileUpdate),
                 child: Container(
@@ -149,132 +149,132 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                 ),
               ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.notifications_none_outlined, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "Notifications",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.language, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "Language",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.light_mode, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "APP Settings",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.policy, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "Privacy Policy",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.mail_outline, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "Contact Us",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 100.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 2.w,
-                    vertical: 1.h,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.person_remove, size: 25.sp, color: grey,),
-                      const Spacer(flex: 1),
-                      Text(
-                        "Delete Account",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
-                      ),
-                      const Spacer(flex: 15),
-                      Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
-                    ],
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.notifications_none_outlined, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "Notifications",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.language, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "Language",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.light_mode, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "APP Settings",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.policy, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "Privacy Policy",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.mail_outline, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "Contact Us",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // GestureDetector(
+              //   child: Container(
+              //     width: 100.w,
+              //     padding: EdgeInsets.symmetric(
+              //       horizontal: 2.w,
+              //       vertical: 1.h,
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Icon(Icons.person_remove, size: 25.sp, color: grey,),
+              //         const Spacer(flex: 1),
+              //         Text(
+              //           "Delete Account",
+              //           style: Theme.of(context).textTheme.titleSmall!.copyWith(fontSize: 20.sp),
+              //         ),
+              //         const Spacer(flex: 15),
+              //         Icon(FontAwesomeIcons.chevronRight, size: 20.sp, color: grey,),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               GestureDetector(
                 onTap: () async {
                   await showExitPopup();

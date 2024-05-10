@@ -14,6 +14,7 @@ abstract class UnitsCont extends GetxController {
   getUnits();
   likeUnit(int id);
   filterUnits(int type);
+  reserve(int id);
 }
 class UnitsContImp extends UnitsCont {
   Requests requests = Requests(Get.find());
@@ -153,6 +154,57 @@ class UnitsContImp extends UnitsCont {
       }
     } catch (e) {
       print("Error $e");
+    }
+  }
+
+  @override
+  reserve(id) async {
+    try {
+      if(id >= 1){
+        if(!isConnected){
+          Get.defaultDialog(
+            backgroundColor: white,
+            title: "Error",
+            titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+            titleStyle: TextStyle(
+              fontSize: 18.sp,
+              fontFamily: "Cairo",
+              color: red,
+              fontWeight: FontWeight.bold,
+            ),
+            content: Text(
+              "No Internet Connection !!",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontFamily: "Cairo",
+              ),
+            ),
+          );
+          requestStatus = RequestStatus.failure;
+          update();
+          return;
+        }
+        Get.defaultDialog(
+          backgroundColor: white,
+          title: "Success",
+          titlePadding: EdgeInsets.only(bottom: 2.h, top: 1.h),
+          titleStyle: TextStyle(
+            fontSize: 18.sp,
+            fontFamily: "Cairo",
+            color: green,
+            fontWeight: FontWeight.bold,
+          ),
+          content: Text(
+            "Reservation Success..",
+            style: TextStyle(
+              fontSize: 18.sp,
+              fontFamily: "Cairo",
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      print("$e");
     }
   }
 

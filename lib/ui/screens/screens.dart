@@ -47,3 +47,4 @@ part 'unit/popular.dart';
 part 'unit/recommended.dart';
 
 part 'cars/home.dart';
+part 'cars/view.dart';

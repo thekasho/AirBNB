@@ -794,14 +794,10 @@ class _ViewUnitScreenState extends State<ViewUnitScreen> {
                               ),
                               child: Text(
                                 "Book",
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .headlineMedium
-                                    ?.copyWith(color: white),
+                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: white),
                               ),
                               onPressed: () {
-
+                                cont.reserve(widget.id ?? 0);
                               },
                             ),
                           ),

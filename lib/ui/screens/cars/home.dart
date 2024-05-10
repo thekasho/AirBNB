@@ -52,7 +52,7 @@ class _CarRentHomePageScreenState extends State<CarRentHomePageScreen> {
                       physics: const ScrollPhysics(),
                       itemBuilder: (BuildContext context, int i) {
                         return GestureDetector(
-                          onTap: (){},
+                          onTap: () => Get.to(()=>ViewCarScreen(id: cont.allCars[i]['id'])),
                           child: Container(
                             width: 95.w,
                             padding: const EdgeInsets.symmetric(
